@@ -1,0 +1,440 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #262a2f;
+  --primary-color: black;
+  --element-color: #1f1f24;
+  --hover-choosen: #30303a;
+  --text-color: white;
+}
+
+body.dark-theme {
+  --background-color: #262a2f;
+  --primary-color: #f9f9f9;
+  --element-color: white;
+  --hover-choosen: #ececec;
+  --text-color: #333;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.search-box {
+  width: 400px;
+  position: relative;
+  background-color: var(--primary-color);
+  margin: 50px auto 0;
+  padding-bottom: 15px;
+  border-radius: 20px;
+}
+
+.header-text {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.time, .fav-header {
+  text-align: center;
+  height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 10px;
+}
+
+.fav-expl {
+  text-align: center;
+  margin: 0 0 10px 0;
+  line-height: 0.9;
+}
+
+.fav-header {
+  padding-top: 0;
+  height: 30px;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.total-cal, .total-sport-cal {
+  width: 50%;
+  color: black;
+  background-color: lightgreen;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.total-sport-cal {
+  background-color: #fed257;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  border-radius: 20px;
+  margin: 10px 0;
+  padding: 0 20px;
+  background: var(--element-color);
+}
+
+#myChart {
+  width:100%;
+  max-width: 400px;
+  margin: 10px auto 0;
+}
+
+input {
+  flex: 1;
+  height: 50px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  outline: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.delete, .heart {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.delete {
+  color: white;
+  background-color: rgb(255, 70, 70);
+  z-index: 10;
+}
+
+.food-container, .sport-container, .fav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.heart {
+  color: crimson;
+  font-size: 23px;
+  margin-bottom: 6px;
+}
+
+.heart:active {
+  animation: fadeEffect 5s;
+}
+
+.height-limit {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.theme {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 20px;
+  padding: 1px;
+  border: 1px solid #f1f1f1;
+}
+
+.theme > button {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  margin: -4px 3px 6px;
+  color: var(--text-color);
+  animation: fadeEffect 0.5s;
+}
+
+.fav-container > .food-unit:hover {
+  cursor: pointer;
+  background-color: var(--hover-choosen);
+}
+
+.theme > button:hover {
+  color: #fed257;
+}
+
+.theme > .active {
+  color: yellow;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+}
+
+.kcal-comparison {
+  text-align: center;
+    font-size: 18px;
+    margin: 0 0 10px;
+    border: solid aliceblue;
+    border-width: 1px 0;
+}
+
+.theme .light {
+  display: none;
+}
+
+::placeholder {
+  color: var(--text-color);
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+ }
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--background-color);
+  border: 6px solid transparent;
+  background-clip: content-box;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border: 4px solid transparent;
+}
+
+.food-amount, .sport-amount {
+  font-size: 20px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.result-box, .sport-result-box {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.result-box ul, .sport-result-box ul {
+  border-top: 1px solid #999;
+  padding: 15px 10px;
+}
+
+.result-box ul li, .sport-result-box ul li {
+  list-style: none;
+  border-radius: 3px;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+.result-box ul li:hover, .sport-result-box ul li:hover {
+  background: #e9f3ff;
+}
+
+.food-unit {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  font-size: 18px;
+  border: solid 1px whitesmoke;
+  background: var(--element-color);
+  border-radius: 10px;
+}
+
+.un-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.un-side > input {
+  width: 50px;
+  margin: 0 0 0 15px;
+  flex: 0;
+}
+
+.un-side > .sport-amount {
+  width: 35px;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.vert {
+  max-width: 180px;
+  font-size: 1em;
+  container-name: sidebar;
+  container-type: inline-size;
+}
+
+.sub-horizontal {
+  font-size: 12px;
+  color: #e1b562;
+}
+
+.amount-changer {
+  width: 20px;
+  height: 14px;
+  font-size: 16px;
+  margin: 0 15px 0 5px;
+  color: var(--text-color);
+}
+
+.tab {
+  overflow: hidden;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-around; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: var(--element-color);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.tablinks, .tabmodes {
+  width: auto;
+  border-radius: 5px ;
+  color: var(--text-color);
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  border-bottom: solid 2px transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: var(--hover-choosen);
+}
+
+.tab button.active {
+  color: #e1b562;
+  border: none;
+  border-bottom: solid 2px #e1b562;
+}
+
+.tabcontent {
+  margin-top: 5px;
+  display: none;
+  padding: 6px 12px;
+}
+
+.tabcontent {
+  animation: fadeEffect 1s; 
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media only all and (max-width: 660px) {
+  .time {
+    font-size: 28px;
+  }
+}
+
+@media only all and (max-width: 500px) {
+  .search-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .theme {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result-box, .sport-result-box {
+    overflow-x: hidden;
+  }
+
+  .delete, .heart {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+
+  .food-unit {
+    padding: 0;
+  }
+
+  .vertical {
+    font-size: 16px;
+  }
+
+
+
+  .un-side {
+    font-size: 12px;
+  }
+}
+
+@media only all and (max-width: 420px) {
+  .vert {
+    font-size: 4cqw;
+  }
+}
+
+@media only all and (max-width: 370px) {
+  .total-cal, .total-sport-cal {
+    padding: 0;
+  }
+
+  .vert {
+    font-size: 3cqw;
+  }
+}
+
+@media only all and (max-width: 355px) {
+  .row > button {
+    display: none;
+  }
+
+  .tab {
+    gap: 0;
+  }
+
+  .food-amount {
+    margin: 0 0 0 5px;
+  }
+
+}

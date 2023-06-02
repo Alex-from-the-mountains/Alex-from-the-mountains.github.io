@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calories</title>
+</head>
+
+<body>
+  <div class="search-box">
+    <div class="header-text">
+      <span>Activity</span>
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'firstTab')" id="Meals">&nbsp;Meals</button>
+      <button class="tablinks" onclick="openTab(event, 'secTab')" id="Exercise">  &nbsp;Exercise</button>
+      <button class="tablinks" onclick="openTab(event, 'thirdTab')" id="Favourites">Favourites</button>
+    </div>
+    <div class="tab transparent">
+      <button class="tabmodes" onclick="setRegime(event, '-20')" id="">Lose weight </button>
+      <button class="tabmodes" onclick="setRegime(event, '0')" id="Zero"> Net zero</button>
+      <button class="tabmodes" onclick="setRegime(event, '20')" id="">Gain weight</button>
+    </div>
+    <div class="time"></div>
+    <div class="theme">
+      <button class="light active" onclick="changeTheme('light')">☀︎</button>
+      <button class="dark" onclick="changeTheme('dark')">☾</button>
+    </div>
+    <canvas id="myChart"></canvas>
+
+      <div class="tabcontent" id="firstTab">
+        <div class="total">
+          <div class="total-cal">🍗 Всего получено:</div>
+          <div class="total-sport-cal">🔥 Всего сожженно:</div>
+        </div>
+        <div class="kcal-comparison"></div>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Choose your food" autocomplete="off">
+          <button disabled><object class="fa-solid" data="emyller-magnifying-glass.svg" width="25"
+              height="25"></object></button>
+        </div>
+        <div class="result-box"></div>
+        <div class="food-container height-limit"></div>
+      </div>
+      <div class="tabcontent" id="secTab">
+        <div class="total">
+          <div class="total-cal">🍗 Всего получено:</div>
+          <div class="total-sport-cal">🔥 Всего сожженно:</div>
+        </div>
+        <div class="kcal-comparison"></div>
+        <div class="row">
+          <input type="text" id="sport-input-box" placeholder="Choose your exercise"
+            autocomplete="off">
+          <button disabled><object class="fa-solid" data="emyller-magnifying-glass.svg" width="25"
+              height="25"></object></button>
+        </div>
+        <div class="sport-result-box"></div>
+        <div class="sport-container height-limit"></div>
+      </div>
+
+    <div class="tabcontent" id="thirdTab">
+      <div class="favourites">
+        <div class="fav-header">Избранное</div>
+        <div class="fav-expl">Нажмите на элемент для выбора, <br> на крестик - для удаления</div>
+        <div class="total">
+          <div class="total-cal">🍗 Всего получено:</div>
+          <div class="total-sport-cal">🔥 Всего сожженно:</div>
+        </div>
+        <div class="kcal-comparison"></div>
+        <div class="fav-container height-limit"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="activity.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="script.js" defer></script>
+</body>
+
+</html>
